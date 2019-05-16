@@ -1,6 +1,10 @@
-var http = require('http');
+var express = require('express');
+var app = express();
 
-http.creatServer((req, res) => {
-    res.writeHead(200, {"Content-Type": "text/plain"});
-    res.end("Hello world");
-}).listen(proccess.env.PORT);
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(proccess.env.PORT, function () {
+  console.log(`Example app listening on port ${proccess.env.PORT}!`);
+});
