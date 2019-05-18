@@ -1,0 +1,9 @@
+{"parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": 6,
+    "sourceType": "module"
+},
+"rules": {
+    "semi": "error"
+}
+}
