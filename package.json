@@ -24,7 +24,7 @@
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./index.ts",
     "prod": "tsc && webpack && node ./build/index.js",
-    "start" : "npm run prod"
+    "start" : "node ./build/index.js"
   },
   "author": "ivanchi88",
   "license": "ISC"
