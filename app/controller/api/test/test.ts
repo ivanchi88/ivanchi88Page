@@ -5,8 +5,12 @@ const router: express.Router = express.Router();
 const url: string = "/test";
 
 router.get('/test', (req, res, next) => {
-    res.send(`<h2>Hello Cago en to</h2>`);
+    res.json({
+        test: "is working :)"
+    });
     next();
 });
+
+
 
 module.exports = new ApiController(router, url);
