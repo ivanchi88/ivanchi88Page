@@ -8,7 +8,9 @@ const apiController_1 = __importDefault(require("../../model/apiController"));
 const router = express_1.default.Router();
 const url = "/test";
 router.get('/test', (req, res, next) => {
-    res.send(`<h2>Hello Cago en to</h2>`);
+    res.json({
+        test: "is working :)"
+    });
     next();
 });
 module.exports = new apiController_1.default(router, url);
