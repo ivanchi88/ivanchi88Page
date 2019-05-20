@@ -1,0 +1,27 @@
+
+
+.hourglass {
+    animation: clockRotation 5s  ease-in-out 0s infinite;
+    height: 50px;
+    width: 50px;
+    background-color: rebeccapurple;
+    margin: 5px;
+    display: inline-block;
+    border-radius: 0.25rem;
+}
+
+.container {
+    display: inline-block;
+}
+
+@keyframes clockRotation {
+    25% {
+        transform: rotateZ(365deg);
+    } 
+    35% {
+        transform: rotateZ(355deg);
+    } 
+    40%, 100% {
+        transform: rotateZ(360deg);
+    } 
+}

@@ -2,14 +2,23 @@
 <html>
 <head>
 <title>Ivanchi88 Page</title>
+
+<link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
-    <h1> Ivanchi88 personal webpage</h1>
-    <h2> Not ready yet :) </h2>
-
+    <div id ="container" class="container">
+    </div>
     <script>
         fetch("/api/test/test").then((res) => res.json()).then((json) => {console.log(json);});
+        
+        let container = document.getElementById("container");
+        for (let i = 0; i < 1500  ;  i++) {
+            let hourglass = document.createElement("div");
+            hourglass.className += " hourglass";
+            container.appendChild(hourglass);
+        }
+        console.log("");
     </script>
 </body>
 

@@ -22,7 +22,7 @@
   },
   "scripts": {
     "tsc": "tsc",
-    "dev": "ts-node-dev --respawn --transpileOnly ./index.ts",
+    "dev": "webpack && ts-node-dev --respawn --transpileOnly ./index.ts",
     "prod": "tsc && webpack && node ./build/index.js",
     "start" : "node ./build/index.js"
   },
