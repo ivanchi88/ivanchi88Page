@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n    <mat-form-field>\r\n        <input matInput [(ngModel)]=\"contactData.senderFirstName\" placeholder=\"Name\">\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n        <input matInput [(ngModel)]=\"contactData.senderLastName\" placeholder=\"LastName\">\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n        <input matInput [(ngModel)]=\"contactData.subject\" placeholder=\"Subject\">\r\n    </mat-form-field>\r\n    \r\n    <mat-form-field>\r\n        <textarea  matInput [(ngModel)]=\"contactData.message\" placeholder=\"Message\"></textarea>\r\n    </mat-form-field>\r\n\r\n    <button mat-raised-button>\r\n        Submit\r\n    </button>\r\n\r\n</div>"
+module.exports = "<div>\r\n    <div class=\"row justify-content-md-center\"> \r\n        <mat-form-field class=\"col-md-4 col-xs-12\">\r\n            <input matInput [(ngModel)]=\"contactData.senderFirstName\" placeholder=\"Name\">\r\n        </mat-form-field>\r\n\r\n        <mat-form-field class=\"col-md-4 col-xs-12\">\r\n            <input matInput [(ngModel)]=\"contactData.senderLastName\" placeholder=\"LastName\">\r\n        </mat-form-field>\r\n\r\n        <mat-form-field class=\"col-md-8 col-xs-12\">\r\n            <input matInput [(ngModel)]=\"contactData.subject\" placeholder=\"Subject\">\r\n        </mat-form-field>\r\n        \r\n        <mat-form-field class=\"col-md-8 col-xs-12\">\r\n            <textarea  matInput matTextareaAutosize=\"true\" matAutosizeMinRows={{minRows}} [(ngModel)]=\"contactData.message\" placeholder=\"Message\"></textarea>\r\n        </mat-form-field>\r\n    </div>\r\n\r\n    <div class=\"row justify-content-center\">\r\n    <button mat-raised-button>\r\n        Submit\r\n    </button> \r\n    </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -61,8 +61,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var ContactFormComponent = /** @class */ (function () {
     function ContactFormComponent() {
+        this.contactData = {
+            message: "",
+            subject: "",
+            senderFirstName: "",
+            senderLastName: "",
+            dateSent: null
+        };
     }
     ContactFormComponent.prototype.ngOnInit = function () {
+        this.minRows = 10;
     };
     ContactFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -86,7 +94,7 @@ var ContactFormComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"exampleClass\">\r\n    {{text}}\r\n</div>\r\n\r\n<div>\r\n    <app-contact-form-component></app-contact-form-component>\r\n</div>"
+module.exports = "<div class=\"row justify-content-center\" >\r\n    <h1 class=\"exampleClass\">\r\n        {{text}}\r\n    </h1>\r\n</div>\r\n\r\n<div>\r\n    <app-contact-form-component></app-contact-form-component>\r\n</div>"
 
 /***/ }),
 
@@ -97,7 +105,7 @@ module.exports = "<div class=\"exampleClass\">\r\n    {{text}}\r\n</div>\r\n\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".exampleClass {\n  color: purple;\n  font-size: 5rem; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFnZXMvaG9tZS9EOlxcUHJvZ3JhbWFjaW9uXFxXZWJcXEl2YW5jaGk4OFxcZnJvbnQvc3JjXFxhcHBcXFBhZ2VzXFxob21lXFxob21lQ29tcG9uZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBYTtFQUNiLGVBQWUsRUFBQSIsImZpbGUiOiJzcmMvYXBwL1BhZ2VzL2hvbWUvaG9tZUNvbXBvbmVudC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5leGFtcGxlQ2xhc3Mge1xyXG4gICAgY29sb3I6IHB1cnBsZTtcclxuICAgIGZvbnQtc2l6ZTogNXJlbTtcclxufSJdfQ== */"
+module.exports = ".exampleClass {\n  color: purple;\n  font-size: 5rem; }\n\n@-webkit-keyframes moveTitle {}\n\n@keyframes moveTitle {}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvUGFnZXMvaG9tZS9EOlxcUHJvZ3JhbWFjaW9uXFxXZWJcXEl2YW5jaGk4OFxcZnJvbnQvc3JjXFxhcHBcXFBhZ2VzXFxob21lXFxob21lQ29tcG9uZW50LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBYTtFQUNiLGVBQWUsRUFBQTs7QUFHbkIsOEJBQVU7O0FBQVYsc0JBQVUiLCJmaWxlIjoic3JjL2FwcC9QYWdlcy9ob21lL2hvbWVDb21wb25lbnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhhbXBsZUNsYXNzIHtcclxuICAgIGNvbG9yOiBwdXJwbGU7XHJcbiAgICBmb250LXNpemU6IDVyZW07XHJcbn1cclxuXHJcbkBrZXlmcmFtZXMgbW92ZVRpdGxlIHtcclxuXHJcblxyXG59Il19 */"
 
 /***/ }),
 
@@ -117,7 +125,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
-        this.text = "welcome";
+        this.text = "Welcome";
     }
     HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -177,18 +185,18 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"\"></div>\n<router-outlet></router-outlet>\n"
+module.exports = "\n<div class=\"container\">\n<router-outlet></router-outlet>\n\n</div>\n"
 
 /***/ }),
 
-/***/ "./src/app/app.component.sass":
+/***/ "./src/app/app.component.scss":
 /*!************************************!*\
-  !*** ./src/app/app.component.sass ***!
+  !*** ./src/app/app.component.scss ***!
   \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2FzcyJ9 */"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"
 
 /***/ }),
 
@@ -214,7 +222,7 @@ var AppComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
-            styles: [__webpack_require__(/*! ./app.component.sass */ "./src/app/app.component.sass")]
+            styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
         })
     ], AppComponent);
     return AppComponent;
@@ -239,15 +247,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _Pages_home_homeComponent_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Pages/home/homeComponent.component */ "./src/app/Pages/home/homeComponent.component.ts");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _Components_ContactForm_contactFormComponent_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Components/ContactForm/contactFormComponent.component */ "./src/app/Components/ContactForm/contactFormComponent.component.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _Pages_home_homeComponent_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Pages/home/homeComponent.component */ "./src/app/Pages/home/homeComponent.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _Components_ContactForm_contactFormComponent_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Components/ContactForm/contactFormComponent.component */ "./src/app/Components/ContactForm/contactFormComponent.component.ts");
 
 
 
  // <-- NgModel lives here
+
 
 
 
@@ -260,20 +270,22 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
-                _Pages_home_homeComponent_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
-                _Components_ContactForm_contactFormComponent_component__WEBPACK_IMPORTED_MODULE_9__["ContactFormComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
+                _Pages_home_homeComponent_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"],
+                _Components_ContactForm_contactFormComponent_component__WEBPACK_IMPORTED_MODULE_10__["ContactFormComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
-                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"],
-                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"]
+                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatFormFieldModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatInputModule"],
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
