@@ -6,7 +6,7 @@ const url: string = "/test";
 
 router.get('/test', (req, res, next) => {
     res.json({
-        test: "is working :)"
+        squares: 20
     });
     next();
 });

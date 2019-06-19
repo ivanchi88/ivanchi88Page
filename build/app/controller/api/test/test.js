@@ -9,7 +9,7 @@ const router = express_1.default.Router();
 const url = "/test";
 router.get('/test', (req, res, next) => {
     res.json({
-        test: "is working :)"
+        squares: 20
     });
     next();
 });

@@ -10,15 +10,15 @@
     <div id ="container" class="container">
     </div>
     <script>
-        fetch("/api/test/test").then((res) => res.json()).then((json) => {console.log(json);});
-        
+        fetch("/api/test/test").then((res) => res.json()).then((json) => {
         let container = document.getElementById("container");
-        for (let i = 0; i < 1500  ;  i++) {
+        for (let i = 0; i < json.squares  ;  i++) {
             let hourglass = document.createElement("div");
             hourglass.className += " hourglass";
             container.appendChild(hourglass);
         }
-        console.log("");
+
+        });
     </script>
 </body>
 

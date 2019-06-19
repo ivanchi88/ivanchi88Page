@@ -1,0 +1,22 @@
+<div>
+    <mat-form-field>
+        <input matInput [(ngModel)]="contactData.senderFirstName" placeholder="Name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="contactData.senderLastName" placeholder="LastName">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [(ngModel)]="contactData.subject" placeholder="Subject">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <textarea  matInput [(ngModel)]="contactData.message" placeholder="Message"></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button>
+        Submit
+    </button>
+
+</div>

@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 app.use('/static', express.static(__dirname + '/static'));
 
-// viewed at http://localhost:8080
-app.get('/', function(req, res) {
+// viewed at http://localhost:PORT
+app.get('/static', function(req, res) {
     res.sendFile(__dirname + '/static/html/index.html');
 });
 
