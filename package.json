@@ -25,9 +25,9 @@
     "tsc": "tsc",
     "dev": "npm-run-all -p startDevServer startDevAngular",
     "startDevServer": "webpack && ts-node-dev --respawn --transpileOnly ./index.ts",
-    "startDevAngular": "cd ./front && ng serve",
-    "buildProdAngular": "cd ./front && ng build --prod",
-    "prod":  "tsc && webpack && node ./build/index.js",
+    "startDevAngular": "cd ./front && ng serve", 
+    "deploy": "cd ./front && ng build --prod && cd .. && tsc && webpack",
+    "prod": "cd ./front && ng build --prod && cd .. && tsc && webpack && node ./build/index.js",
     "start": "node ./build/index.js"
   },
   "author": "ivanchi88",

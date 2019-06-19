@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ivanchi88 Page</title>
+
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div id ="container" class="container">
+    </div>
+    <script>
+        fetch("/api/test/test").then((res) => res.json()).then((json) => {
+        let container = document.getElementById("container");
+        for (let i = 0; i < json.squares  ;  i++) {
+            let hourglass = document.createElement("div");
+            hourglass.className += " hourglass";
+            container.appendChild(hourglass);
+        }
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,5 +1,4 @@
-call npm run buildProdAngular 
-call npm run prod 
+call npm run deploy
 
 call git add .
 call git commit -m "deploy" 
