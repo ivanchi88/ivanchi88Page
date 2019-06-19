@@ -26,7 +26,7 @@
     "dev": "npm-run-all -p startDevServer startDevAngular",
     "startDevServer": "webpack && ts-node-dev --respawn --transpileOnly ./index.ts",
     "startDevAngular": "cd ./front && ng serve",
-    "prod": "cd ./front && npm run build --prod && cd .. && tsc && webpack && node ./build/index.js",
+    "prod": "cd ./front && ng build --prod && cd .. && tsc && webpack && node ./build/index.js",
     "start": "node ./build/index.js"
   },
   "author": "ivanchi88",
