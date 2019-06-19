@@ -10,6 +10,7 @@ const platform_browser_1 = require("@angular/platform-browser");
 const core_1 = require("@angular/core");
 const forms_1 = require("@angular/forms"); // <-- NgModel lives here
 const material_1 = require("@angular/material");
+const ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 const app_routing_module_1 = require("./app-routing.module");
 const app_component_1 = require("./app.component");
 const homeComponent_component_1 = require("./Pages/home/homeComponent.component");
@@ -30,7 +31,9 @@ AppModule = __decorate([
             animations_1.BrowserAnimationsModule,
             forms_1.FormsModule,
             material_1.MatButtonModule,
-            material_1.MatFormFieldModule
+            material_1.MatFormFieldModule,
+            material_1.MatInputModule,
+            ng_bootstrap_1.NgbModule
         ],
         providers: [],
         bootstrap: [app_component_1.AppComponent]

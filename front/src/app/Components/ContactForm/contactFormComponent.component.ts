@@ -9,9 +9,22 @@ export class ContactFormComponent implements OnInit {
  
     contactData : ContactData;
 
-    constructor() { }
+    minRows: Number;
+
+    constructor() {
+      this.contactData = {
+        message: "",
+        subject: "",
+        senderFirstName: "",
+        senderLastName: "",
+        dateSent: null
+      };
+
+      
+     }
  
     ngOnInit() {
+      this.minRows = 10;
     }
  
 }

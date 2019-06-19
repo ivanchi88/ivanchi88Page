@@ -8,8 +8,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 let ContactFormComponent = class ContactFormComponent {
-    constructor() { }
+    constructor() {
+        this.contactData = {
+            message: "",
+            subject: "",
+            senderFirstName: "",
+            senderLastName: "",
+            dateSent: null
+        };
+    }
     ngOnInit() {
+        this.minRows = 10;
     }
 };
 ContactFormComponent = __decorate([

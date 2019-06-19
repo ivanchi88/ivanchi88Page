@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-import {MatButtonModule, MatFormFieldModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +23,9 @@ import { ContactFormComponent } from './Components/ContactForm/contactFormCompon
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

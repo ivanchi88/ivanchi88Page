@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 let HomeComponent = class HomeComponent {
     constructor() {
-        this.text = "welcome";
+        this.text = "Welcome";
     }
 };
 HomeComponent = __decorate([
