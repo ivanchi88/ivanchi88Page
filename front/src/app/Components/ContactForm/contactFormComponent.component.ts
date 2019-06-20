@@ -24,7 +24,8 @@ export class ContactFormComponent implements OnInit {
         message: "",
         subject: "",
         senderFirstName: "",
-        senderLastName: ""
+        senderLastName: "",
+        sender :""
       }; 
     }
  

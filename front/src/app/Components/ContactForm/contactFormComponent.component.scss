@@ -1,0 +1,16 @@
+$blueGray : #b3c4c1;
+$darkGray : #707070;
+.contact-container {
+    border: 1px solid redaaa6;
+    border-radius: 0.5rem;
+    box-shadow: $blueGray 0.5rem 0.5rem 1rem; 
+    transition-duration: 0.25s;
+    &:hover {
+        transform: translateY(0.25rem);
+        box-shadow: $blueGray 0.05rem 0.05rem 1rem;
+    }
+
+    .contact {
+       color: $darkGray; 
+    }
+}
