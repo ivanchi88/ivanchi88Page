@@ -7,16 +7,17 @@ import { ContactData } from 'src/app/Model/contactFolder/contactData';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiServiceService {
+export class ApiService {
 
   constructor(private http: HttpClient) { }
 
   sendContactEmail(data: ContactData): Observable<null> {
-    let url = environment.apiUrl + "/home/sendEmail";
+    let url = environment.apiUrl + "/home/sendContactEmail";
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      })
+      }),
+      responseType: 'text' as 'json'//emptyResponse
     };
     return this.http.post<null>(url, data, options);
   }

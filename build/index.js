@@ -11,6 +11,13 @@ const api = require('./app/controller/api');
 const app = express_1.default();
 //ApplyMiddlewares.default(app);
 app.use(express_1.default.json());
+if (process.env.NODE_ENV != "produccion") {
+    app.use(function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+    });
+}
 app.use('/', express_1.default.static(__dirname + '/static'));
 app.use('/', express_1.default.static(__dirname + '/static/angular'));
 // viewed at http://localhost:8080

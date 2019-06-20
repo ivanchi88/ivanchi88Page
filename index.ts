@@ -10,6 +10,13 @@ const app: Express.Application = Express();
 
 //ApplyMiddlewares.default(app);
 app.use(Express.json());
+if (process.env.NODE_ENV != "produccion") {
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+      });
+}
 
 app.use('/', Express.static(__dirname + '/static'));
 app.use('/', Express.static(__dirname + '/static/angular'));
