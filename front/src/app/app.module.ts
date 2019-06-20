@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './Pages/home/homeComponent.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactFormComponent } from './Components/ContactForm/contactFormComponent.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ContactFormComponent } from './Components/ContactForm/contactFormCompon
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

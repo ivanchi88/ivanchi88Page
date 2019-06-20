@@ -4,7 +4,8 @@ import ApiController from '../model/apiController';
 const apiUrl : string = "/api";
 
 const routers : ApiController [] = [
-    require('./test/test')
+    require('./test/test'),
+    require('./home/home')
 ]
 
 let router: express.Router = express.Router();

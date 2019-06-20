@@ -1,11 +1,18 @@
-import express = require('express');
+import Express from 'express';
+import ApplyMiddlewares = require('./app/middleware');
+
+if(process.env.NODE_ENV != "produccion") {
+    require('dotenv').config(); 
+}
+
 const api = require('./app/controller/api');
+const app: Express.Application = Express();
 
-const app: express.Application = express();
+//ApplyMiddlewares.default(app);
+app.use(Express.json());
 
-
-app.use('/', express.static(__dirname + '/static'));
-app.use('/', express.static(__dirname + '/static/angular'));
+app.use('/', Express.static(__dirname + '/static'));
+app.use('/', Express.static(__dirname + '/static/angular'));
 
 // viewed at http://localhost:8080
 app.get('/', function(req, res) {

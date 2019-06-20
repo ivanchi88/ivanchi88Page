@@ -9,8 +9,6 @@ router.get('/test', (req, res, next) => {
         squares: 20
     });
     next();
-});
-
-
+}); 
 
 module.exports = new ApiController(router, url);
