@@ -34,6 +34,10 @@ export class ContactFormComponent implements OnInit {
     }
 
     onSubmitClick () {
+      if (!this.contactData.message ||  this.contactData.message === "") {
+        this.message = "Empty mail...";
+        return;
+      };
       this.contactData.dateSent = new Date();
       this.apiService.sendContactEmail(this.contactData).subscribe(() => {
         this.resetData();
