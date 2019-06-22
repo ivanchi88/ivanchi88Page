@@ -5,6 +5,8 @@ if(process.env.NODE_ENV != "produccion") {
     require('dotenv').config(); 
 }
 
+process.env.ROOTDIR = __dirname;
+
 const api = require('./app/controller/api');
 const app: Express.Application = Express();
 

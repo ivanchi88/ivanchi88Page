@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 if (process.env.NODE_ENV != "produccion") {
     require('dotenv').config();
 }
+process.env.ROOTDIR = __dirname;
 const api = require('./app/controller/api');
 const app = express_1.default();
 //ApplyMiddlewares.default(app);

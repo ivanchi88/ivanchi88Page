@@ -8,7 +8,7 @@ const url: string = "/home";
 
 router.post('/sendContactEmail', (req, res, next) => {
     let contactData: ContactData = req.body;
-    Mailer.SendMail(contactData);
+    Mailer.SendContactMail(contactData);
     res.sendStatus(200);
     next();
 });

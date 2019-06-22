@@ -2,9 +2,7 @@ var express = require('express');
 var app = express();
 const PORT = process.env.PORT || 5000
 
-if(process.env.NODE_ENV == "produccion") {
-    require('dotenv').config();
-}
+
 
 app.use('/static', express.static(__dirname + '/static'));
 
