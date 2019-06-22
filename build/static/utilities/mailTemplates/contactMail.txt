@@ -5,7 +5,7 @@
         <title>A Simple Responsive HTML Email</title>
         <style type="text/css">
         body {margin: 0; padding: 0; min-width: 100%!important;}
-        .content {width: 100%; max-width: 600px;}  
+        .content {width: 100%;}  
         </style>
     </head>
     <body yahoo bgcolor="#F7F7F7">
