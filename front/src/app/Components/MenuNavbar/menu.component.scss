@@ -1,0 +1,8 @@
+.navbar-brand { 
+    transition-duration: 0.2s;
+    background-color: transparent;
+    &:hover {
+        transform: scale(1.1); 
+        text-shadow: 0.2rem 0.2rem 0.5rem rgba(77, 60, 107, 0.466);
+    }
+}

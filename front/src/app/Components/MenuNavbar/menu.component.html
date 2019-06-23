@@ -1,0 +1,13 @@
+<div class="container">
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light">
+        <button class="navbar-toggler col-xs-2" (click)="isCollapsed = !isCollapsed" type="button" [attr.aria-expanded]="!isCollapsed" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse col-xs-10" id="mainMenuNav" [ngbCollapse]="isCollapsed">
+            <div class="navbar-nav">
+                <a class="navbar-brand" routerLink="/">Home</a>
+                <a class="navbar-brand" routerLink="/spriteStacker">Sprite stacker</a>
+            </div>
+        </div>
+    </nav>
+</div>
