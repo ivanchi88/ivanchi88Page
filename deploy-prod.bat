@@ -6,6 +6,6 @@ call git push heroku master
 
 call git push origin master
 
-call git checkout -b deploy
+call git checkout -b origin/deploy
 call git push origin deploy
-call git checkout master
+call git checkout origin/master
