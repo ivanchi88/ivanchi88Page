@@ -7,13 +7,13 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
   })
   export class SpriteStacker  {
 
-    // changeColor = function ($event: MouseEvent){ 
+    selectedColor: string;
 
-    //   this.paintingContext.fillStyle = this.colors[pos];
-    //   this.paintingContext.fillRect(0, 0, width, height);
-    // } 
+    constructor() {
+      this.selectedColor = "#F4D28A";
+    }
 
     changeColor = function ($event: string) {
-      console.log($event);
+      this.selectedColor = $event;
     }
   }

@@ -3,4 +3,5 @@ export class DrawingPoint {
     y: number;
     color: string;
     layer: number;
+    transparent: boolean;
 }
