@@ -13,6 +13,8 @@ import { ContactFormComponent } from './Components/ContactForm/contactFormCompon
 import { HttpClientModule } from '@angular/common/http';
 import { SpriteStacker } from './Pages/spriteStacker/spriteStacker.component';
 import { MenuComponent } from './Components/MenuNavbar/menu.component';
+import { ColorSelector } from './Components/SpriteStacker/ColorSelector/colorSelector.component';
+import { PaintingCanvas } from './Components/SpriteStacker/PaintingCanvas/paintingCanvas.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MenuComponent } from './Components/MenuNavbar/menu.component';
     MenuComponent,
     HomeComponent,
     SpriteStacker,
-    ContactFormComponent
+    PaintingCanvas,
+    ContactFormComponent,
+    ColorSelector
   ],
   imports: [
     BrowserModule,
