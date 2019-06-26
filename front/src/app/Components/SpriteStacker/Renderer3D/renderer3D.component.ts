@@ -63,7 +63,7 @@ export class Renderer3D implements AfterViewInit {
 
     this.scene.add(edgesLine);
 
-     interval(30).subscribe(() => this.animate(this.boxes, this.renderer));
+    //interval(30).subscribe(() => this.animate(this.boxes, this.renderer));
 
   } 
 
