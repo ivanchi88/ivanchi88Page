@@ -63,7 +63,7 @@ export class Renderer3D implements AfterViewInit {
 
     this.scene.add(edgesLine);
 
-    //interval(30).subscribe(() => this.animate(this.boxes, this.renderer));
+    interval(30).subscribe(() => this.animate(this.boxes, this.renderer));
 
   } 
 
@@ -74,7 +74,7 @@ export class Renderer3D implements AfterViewInit {
     boxes.forEach(layer => {
       layer.forEach(row => {
         row.forEach(col => {
-          col.cube.rotateY(5);
+          //col.cube.rotateY(5);
         });
       });
     });
