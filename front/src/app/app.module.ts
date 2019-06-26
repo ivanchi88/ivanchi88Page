@@ -15,6 +15,7 @@ import { SpriteStacker } from './Pages/spriteStacker/spriteStacker.component';
 import { MenuComponent } from './Components/MenuNavbar/menu.component';
 import { ColorSelector } from './Components/SpriteStacker/ColorSelector/colorSelector.component';
 import { PaintingCanvas } from './Components/SpriteStacker/PaintingCanvas/paintingCanvas.component';
+import { Renderer3D } from './Components/SpriteStacker/Renderer3D/renderer3D.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PaintingCanvas } from './Components/SpriteStacker/PaintingCanvas/painti
     HomeComponent,
     SpriteStacker,
     PaintingCanvas,
+    Renderer3D,
     ContactFormComponent,
     ColorSelector
   ],

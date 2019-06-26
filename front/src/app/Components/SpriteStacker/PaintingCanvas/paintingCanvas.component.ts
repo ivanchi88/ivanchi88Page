@@ -81,10 +81,16 @@ export class PaintingCanvas implements AfterViewInit {
     
     let oldColor = this.painting[this.oldMouseY][ this.oldMouseX].transparent ? this.black :  this.painting[this.oldMouseY][this.oldMouseX].color;
     this.drawBorderedBox(this.oldMouseX, this.oldMouseY, this.sqWidth, this.sqHeight, oldColor,"#D4DCE7"); 
-    this.drawBorderedBox(point.col, point.row, this.sqWidth, this.sqHeight, "#F6BF49", "#D4DCE7");
 
+    if (!this.isOnBounds(point)) return;
+
+    this.drawBorderedBox(point.col, point.row, this.sqWidth, this.sqHeight, "#F6BF49", "#D4DCE7");
     this.oldMouseX = point.col;
     this.oldMouseY = point.row; 
+  }
+
+  isOnBounds = function(point: any) {
+    return (point.col >= 0 && point.col < this.cols) && (point.row >= 0 && point.row < this.rows); 
   }
 
   paint = function ($event: MouseEvent) {
