@@ -13,6 +13,7 @@ export class PaintingCanvas implements AfterViewInit {
   public context: CanvasRenderingContext2D; 
 
   @Input('color') selectedColor: string;
+  @Output() drawed = new EventEmitter<DrawingPoint[][]>();
 
   rows : number = 25;
   cols : number = 25; 
@@ -94,9 +95,18 @@ export class PaintingCanvas implements AfterViewInit {
   }
 
   paint = function ($event: MouseEvent) {
+    if (!this.selectedColor) return;
     let point = this.getColAndRowFromMouseEvent($event);
-    this.painting[point.row][point.col].color = this.selectedColor; 
-    this.painting[point.row][point.col].transparent = false;
+    this.painting[point.row][point.col] = new DrawingPoint({
+      color :this.selectedColor,
+      layer : 0,
+      transparent: false,
+      x: point.col,
+      y: point.row 
+    });
+
     this.drawBorderedBox(point.col, point.row, this.sqWidth, this.sqHeight, this.selectedColor , "#D4DCE7");
+
+    this.drawed.emit(this.painting);
   }
 }
