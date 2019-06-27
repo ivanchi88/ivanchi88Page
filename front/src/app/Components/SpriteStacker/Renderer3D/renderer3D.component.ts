@@ -62,7 +62,7 @@ export class Renderer3D implements AfterViewInit {
 
     this.scene.add(edgesLine);
 
-    interval(30).subscribe(() => this.animate(this.camera, this.renderer));
+    interval(50).subscribe(() => this.animate(this.camera, this.renderer));
 
   } 
 
@@ -70,7 +70,7 @@ export class Renderer3D implements AfterViewInit {
     
       requestAnimationFrame(()=> {});
 
-      this.angle += 5; 
+      this.angle += 3; 
       let radius = 20; 
 
       this.camera.position.x = radius * Math.cos(this.angle * Math.PI / 180);
