@@ -62,7 +62,7 @@ export class Renderer3D implements AfterViewInit {
 
     this.scene.add(edgesLine);
 
-    interval(50).subscribe(() => this.animate(this.camera, this.renderer));
+    interval(40).subscribe(() => this.animate(this.camera, this.renderer));
 
   } 
 
@@ -105,7 +105,7 @@ export class Renderer3D implements AfterViewInit {
               linewidth: 10
             });
             let edgesLine = new LineSegments(edges, edgesMaterial);
-            //this.scene.add(edgesLine);
+            this.scene.add(edgesLine);
 
             cube.position.x = col.x + startX;
             cube.position.z = col.y + startZ;
