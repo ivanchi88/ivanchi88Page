@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, Input } from '@angular/core';   
-import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh, Camera, EdgesGeometry, LineBasicMaterial, LineSegments, Color }from 'three';
+import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh, Camera, EdgesGeometry, LineBasicMaterial, LineSegments, Color, Math as ThreeMath }from 'three';
 import { interval, Observable } from 'rxjs';
 import { DrawingPoint } from 'src/app/Model/SpriteStacker/DrawingPoint';
 import { Box3D } from 'src/app/Model/SpriteStacker/Box3D';
@@ -31,10 +31,13 @@ export class Renderer3D implements AfterViewInit {
 
   boxes: Box3D [][][];
 
+  angle: number;
+
   renderInterval: Observable<any>;
 
   ngAfterViewInit(): void {
     this.boxes = [];
+    this.angle = 0;
     this.scene = new Scene();
     this.scene.background = new Color(0x84ABAB);
     this.camera = new PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 100);
@@ -42,10 +45,6 @@ export class Renderer3D implements AfterViewInit {
       canvas: this.canvas3D.nativeElement,
       precision: "highp"
     });
-
-    this.camera.position.z = 4; 
-    this.camera.position.y = 6;
-    this.camera.rotation.x = -45;
 
     this.renderer.render( this.scene, this.camera );
 
@@ -57,29 +56,32 @@ export class Renderer3D implements AfterViewInit {
     let edges = new EdgesGeometry(geometry);
     let edgesMaterial =new  LineBasicMaterial({
       color: 0xD03C00,
-      linewidth: 10
+      linewidth: 2
     });
     let edgesLine = new LineSegments(edges, edgesMaterial);
 
     this.scene.add(edgesLine);
 
-    interval(30).subscribe(() => this.animate(this.boxes, this.renderer));
+    interval(30).subscribe(() => this.animate(this.camera, this.renderer));
 
   } 
 
-    animate = function (boxes: Box3D[][][], renderer: WebGLRenderer) {
+    animate = function (camera: PerspectiveCamera, renderer: WebGLRenderer) {
     
-    requestAnimationFrame(()=> {});
+      requestAnimationFrame(()=> {});
 
-    boxes.forEach(layer => {
-      layer.forEach(row => {
-        row.forEach(col => {
-          //col.cube.rotateY(5);
-        });
-      });
-    });
+      this.angle += 5; 
+      let radius = 20; 
 
-    renderer.render( this.scene, this.camera );
+      this.camera.position.x = radius * Math.cos(this.angle * Math.PI / 180);
+      this.camera.position.z = radius * Math.sin(this.angle * Math.PI / 180);
+      this.camera.position.y = 10;
+      
+      //this.camera.rotation.y = ThreeMath.degToRad(-this.angle + 90)
+      //this.camera.rotation
+      camera.lookAt(0, 0, 0)
+ 
+      renderer.render( this.scene, this.camera );
    };
 
   createObjectsInScene() {
@@ -103,13 +105,12 @@ export class Renderer3D implements AfterViewInit {
               linewidth: 10
             });
             let edgesLine = new LineSegments(edges, edgesMaterial);
+            //this.scene.add(edgesLine);
 
             cube.position.x = col.x + startX;
             cube.position.z = col.y + startZ;
             edgesLine.position.x = col.x + startX;
             edgesLine.position.z = col.y + startZ;
-
-            cube.rotation.order = "XZY";
 
             let box = new Box3D ({
               color : col.color,
@@ -118,8 +119,8 @@ export class Renderer3D implements AfterViewInit {
               cube: cube,
               edges: edgesLine 
             });
+
             this.boxes[layerI][rowI].push(box); 
-            this.scene.add(edgesLine);
           }
         });
       });
