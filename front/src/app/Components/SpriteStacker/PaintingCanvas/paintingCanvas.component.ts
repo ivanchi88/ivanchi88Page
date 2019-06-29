@@ -15,6 +15,8 @@ export class PaintingCanvas implements AfterViewInit {
   @Input('color') selectedColor: string;
   @Output() drawed = new EventEmitter<DrawingPoint[][]>();
 
+  isPainting : boolean;
+  
   rows : number = 25;
   cols : number = 25; 
   painting : DrawingPoint[][] = [[]];
@@ -33,6 +35,7 @@ export class PaintingCanvas implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.context = (<HTMLCanvasElement>this.paintingCanvas.nativeElement).getContext('2d'); 
+    this.isPainting = false;
     
     this.width =  this.paintingCanvas.nativeElement.width;
     this.height = this.paintingCanvas.nativeElement.height;
@@ -79,34 +82,51 @@ export class PaintingCanvas implements AfterViewInit {
   
   moveMouse = function ($event: MouseEvent) {  
     let point = this.getColAndRowFromMouseEvent($event);
-    
-    let oldColor = this.painting[this.oldMouseY][ this.oldMouseX].transparent ? this.black :  this.painting[this.oldMouseY][this.oldMouseX].color;
-    this.drawBorderedBox(this.oldMouseX, this.oldMouseY, this.sqWidth, this.sqHeight, oldColor,"#D4DCE7"); 
 
     if (!this.isOnBounds(point)) return;
 
-    this.drawBorderedBox(point.col, point.row, this.sqWidth, this.sqHeight, "#F6BF49", "#D4DCE7");
-    this.oldMouseX = point.col;
-    this.oldMouseY = point.row; 
+    if (!this.isPainting) {
+      this.hoverMouseOnCanvas(point);
+    } else {
+      this.paint(point);
+    }
+  }
+
+  stopPainting ($event: MouseEvent): void {
+    this.isPainting = false;
+    this.drawed.emit(this.painting);
+  }
+
+  startPainting ($event: MouseEvent): void {
+    this.isPainting =  true;
+    this.moveMouse($event);
   }
 
   isOnBounds = function(point: any) {
     return (point.col >= 0 && point.col < this.cols) && (point.row >= 0 && point.row < this.rows); 
   }
 
-  paint = function ($event: MouseEvent) {
-    if (!this.selectedColor) return;
-    let point = this.getColAndRowFromMouseEvent($event);
+  paint = function (point: any) {
+    if (!this.selectedColor) return; 
+    if (this.painting[point.row][point.col].color == this.selectedColor && !this.painting[point.row][point.col].transparent) {
+      return;
+    }
     this.painting[point.row][point.col] = new DrawingPoint({
       color :this.selectedColor,
       layer : 0,
       transparent: false,
       x: point.col,
       y: point.row 
-    });
+    }); 
+    this.hasChangedDrawing = true;
+    this.drawBorderedBox(point.col, point.row, this.sqWidth, this.sqHeight, this.selectedColor , "#D4DCE7"); 
+  }
 
-    this.drawBorderedBox(point.col, point.row, this.sqWidth, this.sqHeight, this.selectedColor , "#D4DCE7");
-
-    this.drawed.emit(this.painting);
+  hoverMouseOnCanvas (point: any) {
+    let oldColor = this.painting[this.oldMouseY][ this.oldMouseX].transparent ? this.black :  this.painting[this.oldMouseY][this.oldMouseX].color;
+    this.drawBorderedBox(this.oldMouseX, this.oldMouseY, this.sqWidth, this.sqHeight, oldColor,"#D4DCE7"); 
+    this.drawBorderedBox(point.col, point.row, this.sqWidth, this.sqHeight, "#F6BF49", "#D4DCE7");
+    this.oldMouseX = point.col;
+    this.oldMouseY = point.row; 
   }
 }

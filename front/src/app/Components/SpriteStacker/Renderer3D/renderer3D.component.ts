@@ -46,22 +46,6 @@ export class Renderer3D implements AfterViewInit {
       precision: "highp"
     });
 
-    this.renderer.render( this.scene, this.camera );
-
-    let geometry = new BoxGeometry(1, 1, 1);
-    let material = new MeshBasicMaterial({color: 0x00C3D0});
-    let cube = new Mesh(geometry, material);
-    this.scene.add(cube);
-
-    let edges = new EdgesGeometry(geometry);
-    let edgesMaterial =new  LineBasicMaterial({
-      color: 0xD03C00,
-      linewidth: 2
-    });
-    let edgesLine = new LineSegments(edges, edgesMaterial);
-
-    this.scene.add(edgesLine);
-
     interval(40).subscribe(() => this.animate(this.camera, this.renderer));
 
   } 
@@ -75,10 +59,8 @@ export class Renderer3D implements AfterViewInit {
 
       this.camera.position.x = radius * Math.cos(this.angle * Math.PI / 180);
       this.camera.position.z = radius * Math.sin(this.angle * Math.PI / 180);
-      this.camera.position.y = 10;
+      this.camera.position.y = 20;
       
-      //this.camera.rotation.y = ThreeMath.degToRad(-this.angle + 90)
-      //this.camera.rotation
       camera.lookAt(0, 0, 0)
  
       renderer.render( this.scene, this.camera );
