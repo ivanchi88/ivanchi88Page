@@ -26,6 +26,9 @@ export class PaintingCanvas implements AfterViewInit {
   width: number;
   height: number;
 
+  scaleX: number;
+  scaleY: number;
+
   sqWidth: number; 
   sqHeight: number;
 
@@ -37,8 +40,12 @@ export class PaintingCanvas implements AfterViewInit {
     this.context = (<HTMLCanvasElement>this.paintingCanvas.nativeElement).getContext('2d'); 
     this.isPainting = false;
     
-    this.width =  this.paintingCanvas.nativeElement.width;
-    this.height = this.paintingCanvas.nativeElement.height;
+    this.width =  this.paintingCanvas.nativeElement.clientWidth;
+    this.height = this.paintingCanvas.nativeElement.clientHeight;
+
+    this.scaleX =  this.paintingCanvas.nativeElement.width / this.width;
+    this.scaleY =  this.paintingCanvas.nativeElement.height / this.height;
+
     this.sqWidth = this.width / this.cols;
     this.sqHeight = this.height / this.rows; 
 
@@ -62,19 +69,20 @@ export class PaintingCanvas implements AfterViewInit {
 
   drawBorderedBox = function (col :number, row :number, width :number, height :number, bgColor: string , borderColor: string) {
     this.context.fillStyle = bgColor;
-    this.context.fillRect(col * width + 1, row * height + 1, width -2 , height - 2); 
+    this.context.fillRect(col * (width * this.scaleX) + 1, row * (height * this.scaleY) + 1, width * this.scaleX -2 , height * this.scaleY - 2); 
 
     this.context.beginPath();
     this.context.lineWidth = 1;
     this.context.strokeStyle = borderColor;
-    this.context.rect(col * width, row * height, width, height); 
+    this.context.rect(col * width * this.scaleX, row * height * this.scaleY, width * this.scaleX, height * this.scaleY); 
     this.context.stroke();
   }
 
   getColAndRowFromMouseEvent = function($event: MouseEvent) : any {
     var rect = this.paintingCanvas.nativeElement.getBoundingClientRect();
-
-    let col = Math.floor(($event.clientX - rect.left) / this.sqWidth);
+    
+    console.log($event.clientY - rect.top + " " + this.sqHeight);
+    let col = Math.floor(($event.clientX - rect.left ) / this.sqWidth);
     let row = Math.floor(($event.clientY - rect.top) / this.sqHeight);
 
     return {col, row};

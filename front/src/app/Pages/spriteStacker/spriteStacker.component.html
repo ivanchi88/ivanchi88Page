@@ -1,9 +1,14 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12">
-            <app-color-selector-component class="colorSelector" (colorChanged)="changeColor($event)"></app-color-selector-component>
-            <app-painting-canvas-component [color]="selectedColor" (drawed)="drawed($event)"></app-painting-canvas-component>
-            <app-renderer-3D-component [drawings]="drawings" ></app-renderer-3D-component>
-        </div>
+    <div class="row"> 
+            <div class="col-sm-2">
+                <app-color-selector-component class="colorSelector" (colorChanged)="changeColor($event)"></app-color-selector-component>
+            </div>
+            <div class="col-sm-7">
+                <app-painting-canvas-component [color]="selectedColor" (drawed)="drawed($event)"></app-painting-canvas-component>
+            </div>
+            <!-- <div class="col-sm-4">
+                <app-renderer-3D-component [drawings]="drawings" ></app-renderer-3D-component>
+            </div> -->
+ 
     </div>
 </div>
