@@ -17,8 +17,8 @@ export class PaintingCanvas implements AfterViewInit {
 
   isPainting : boolean;
   
-  rows : number = 25;
-  cols : number = 25; 
+  rows : number = 50;
+  cols : number = 50; 
   painting : DrawingPoint[][] = [[]];
   black : string = "#747576";
   layer: number = 0;
