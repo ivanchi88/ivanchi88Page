@@ -80,15 +80,16 @@ export class PaintingCanvas implements AfterViewInit {
 
   getColAndRowFromMouseEvent = function($event: MouseEvent) : any {
     var rect = this.paintingCanvas.nativeElement.getBoundingClientRect();
-    
-    console.log($event.clientY - rect.top + " " + this.sqHeight);
+
     let col = Math.floor(($event.clientX - rect.left ) / this.sqWidth);
     let row = Math.floor(($event.clientY - rect.top) / this.sqHeight);
 
     return {col, row};
   }
   
-  moveMouse = function ($event: MouseEvent) {  
+  moveMouse = function ($event: MouseEvent) { 
+    $event.stopPropagation(); 
+    
     let point = this.getColAndRowFromMouseEvent($event);
 
     if (!this.isOnBounds(point)) return;

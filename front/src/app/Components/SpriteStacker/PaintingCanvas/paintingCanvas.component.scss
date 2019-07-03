@@ -1,0 +1,18 @@
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
+
+.paintingCanvas{
+    width: 90vw; 
+    height: 50vh; 
+    border: 1px solid black;
+}
+
+@include media-breakpoint-up(sm) {
+    .paintingCanvas{
+        width: 25vw; 
+        height: 25vw; 
+        border: 1px solid black;
+    }
+}

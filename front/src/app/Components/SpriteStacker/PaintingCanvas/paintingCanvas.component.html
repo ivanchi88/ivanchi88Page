@@ -1,1 +1,1 @@
-<canvas #paintingCanvas (mousemove)="moveMouse($event)" (mousedown)="startPainting($event)" width="1080" height="720" (mouseup)="stopPainting($event)" style="width: 50vh; height: 50vh; border: 1px solid black;"> </canvas>
+<canvas class="paintingCanvas" #paintingCanvas (mousemove)="moveMouse($event); false" (mousedown)="startPainting($event)" width="1080" height="720" (mouseup)="stopPainting($event)" ></canvas>
