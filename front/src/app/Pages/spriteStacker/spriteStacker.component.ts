@@ -11,13 +11,12 @@ import { Observable } from 'rxjs';
 
     selectedColor: string;
 
-    boxes: Observable<DrawingPoint[][][]>;
     layer: number;
 
     drawings: DrawingPoint[][][];
 
     constructor() { 
-      this.drawings = [];
+      this.drawings = [[[]]];
       this.layer = 0;
     }
 
@@ -29,11 +28,29 @@ import { Observable } from 'rxjs';
       if (!this.drawings[this.layer]) {
         this.drawings.push();
       }
-      this.drawings[this.layer] = $event; 
+      console.log(this.drawings);
+      this.drawings[this.layer] = $event.map(row => row.map(entry => {
+        let obj = Object.assign({},  entry); 
+        if (!obj.transparent) {
+          obj.transparent = obj.layer != this.layer;
+        }
+        return obj;
+      })); 
       this.drawings = [...this.drawings]; 
     } 
 
     changeColor($event: string) {
-        this.selectedColor = $event;
+      this.selectedColor = $event;
     } 
+
+    addLayer() {
+      this.layer+=1;
+      this.drawings.push([[]]);
+    }
+
+    goLayerDown() {
+      if (this.layer > 0) {
+      this.layer -= 1;
+      }
+    }
   }

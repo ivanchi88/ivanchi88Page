@@ -13,6 +13,8 @@ export class PaintingCanvas implements AfterViewInit {
   public context: CanvasRenderingContext2D; 
 
   @Input('color') selectedColor: string;
+  @Input('layer') layer: number;
+
   @Output() drawed = new EventEmitter<DrawingPoint[][]>();
 
   isPainting : boolean;
@@ -20,8 +22,7 @@ export class PaintingCanvas implements AfterViewInit {
   rows : number = 50;
   cols : number = 50; 
   painting : DrawingPoint[][] = [[]];
-  black : string = "#747576";
-  layer: number = 0;
+  black : string = "#747576"; 
 
   width: number;
   height: number;
@@ -122,7 +123,7 @@ export class PaintingCanvas implements AfterViewInit {
     }
     this.painting[point.row][point.col] = new DrawingPoint({
       color :this.selectedColor,
-      layer : 0,
+      layer : this.layer,
       transparent: false,
       x: point.col,
       y: point.row 

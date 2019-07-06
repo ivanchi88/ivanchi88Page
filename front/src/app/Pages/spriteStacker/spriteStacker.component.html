@@ -2,12 +2,19 @@
     <div class="row"> 
         <div class="col-sm-2">
             <app-color-selector-component class="colorSelector" (colorChanged)="changeColor($event)"></app-color-selector-component>
+            <div>
+                <button (click)="addLayer()"> 
+                    Add Layer
+                </button>
+                <span>{{layer}}</span>
+                <button (click)="goLayerDown()">Down</button>
+            </div>
         </div>
         <div class="col-sm-7">
-            <app-painting-canvas-component [color]="selectedColor" (drawed)="drawed($event)"></app-painting-canvas-component>
+            <app-painting-canvas-component [layer]="layer" [color]="selectedColor" (drawed)="drawed($event)"></app-painting-canvas-component>
         </div>
         <div class="col-sm-4">
-            <app-renderer-3D-component [drawings]="drawings" ></app-renderer-3D-component>
+            <app-renderer-3D-component [drawings]="drawings" [layer]="layer" ></app-renderer-3D-component>
         </div>
     </div>
 </div> 

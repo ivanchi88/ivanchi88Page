@@ -25,6 +25,8 @@ export class Renderer3D implements AfterViewInit {
     this.createObjectsInScene();
   }
 
+  @Input('layer') layer: number;
+
   scene: Scene;
   camera: PerspectiveCamera;
   renderer: WebGLRenderer;
@@ -59,7 +61,7 @@ export class Renderer3D implements AfterViewInit {
 
       this.camera.position.x = radius * Math.cos(this.angle * Math.PI / 180);
       this.camera.position.z = radius * Math.sin(this.angle * Math.PI / 180);
-      this.camera.position.y = 20;
+      this.camera.position.y = 5 + this.layer;
       
       camera.lookAt(0, 0, 0)
  
@@ -67,6 +69,7 @@ export class Renderer3D implements AfterViewInit {
    };
 
   createObjectsInScene() {
+
     this.__drawings.forEach((layer, layerI) => {
       let startZ = -Math.floor(layer.length/2); 
       this.boxes.push([]);
@@ -91,8 +94,11 @@ export class Renderer3D implements AfterViewInit {
 
             cube.position.x = col.x + startX;
             cube.position.z = col.y + startZ;
+            cube.position.y = col.layer;
             edgesLine.position.x = col.x + startX;
             edgesLine.position.z = col.y + startZ;
+            edgesLine.position.y = col.layer;
+            
 
             let box = new Box3D ({
               color : col.color,
