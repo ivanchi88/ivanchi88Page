@@ -1,35 +1,37 @@
-<div class="contact-container pb-2"> 
-    <div class="row justify-content-md-center"> 
-        <h3 class="contact">Contact</h3>
-        <div class="col-12"></div>
-        <mat-form-field class="col-md-5 col-xs-12">
-            <input matInput [(ngModel)]="contactData.senderFirstName" placeholder="Name">
-        </mat-form-field>
+<form class="contact-container pb-2 p-4" novalidate>  
+  <div class="row justify-content-md-center">
+    <h3 class="contact w-100 mb-3 text-center">Contact</h3>
 
-        <mat-form-field class="col-md-5 col-xs-12">
-            <input matInput [(ngModel)]="contactData.senderLastName" placeholder="LastName">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-5 col-xs-12">
-                <input matInput [(ngModel)]="contactData.sender" placeholder="Email">
-        </mat-form-field>
-
-        <mat-form-field class="col-md-5 col-xs-12">
-            <input matInput [(ngModel)]="contactData.subject" placeholder="Subject">
-        </mat-form-field>
-        
-        <mat-form-field class="col-md-10 col-xs-12">
-            <textarea  matInput matTextareaAutosize="true" matAutosizeMinRows={{minRows}} [(ngModel)]="contactData.message" placeholder="Message"></textarea>
-        </mat-form-field>
+    <div class="col-md-5 col-xs-12 input-group">
+      <input class="input" [(ngModel)]="contactData.senderFirstName" id="Name" name="Name" placeholder=" " required>
+      <label class="input-label" for="Name">Name</label>
     </div>
 
-    <div class="row justify-content-center">
-    <button mat-raised-button (click)="onSubmitClick()">
+    <div class="col-md-5 col-xs-12 input-group">
+      <input class="input" [(ngModel)]="contactData.senderLastName" id="LastName" name="LastName" placeholder=" " required>
+      <label class="input-label" for="LastName">Last name</label>
+    </div>
+
+    <div class="col-md-5 col-xs-12 input-group">
+      <input class="input" [(ngModel)]="contactData.sender" id="Email" name="Email" placeholder=" " required>
+      <label class="input-label" for="Email">Email</label>
+    </div>
+
+    <div class="col-md-5 col-xs-12 input-group">
+      <input class="input" [(ngModel)]="contactData.subject" id="Subject" name="Subject" placeholder=" " required>
+      <label class="input-label" for="Subject">Subject</label>
+    </div>
+
+    <div class="col-md-10 col-xs-12 input-group">
+      <textarea class="input" [(ngModel)]="contactData.message" id="Message" name="Message" rows="4" required></textarea>
+      <label class="input-label" placeholder=" " for="Message">Message</label>
+      <div class="invalid-input form-feedback" *ngIf="message && message !== ''"> {{message}} </div>
+    </div>
+
+    <div class="w-100 mt-4">
+      <button class="btn btn-secondary form-submission" (click)="onSubmitClick()">
         Submit
-    </button>
-    </div>
-    <div *ngIf="message && message !== ''" class="row justify-content-center">
-        <h3> {{message}} </h3>
-    </div>
-
-</div>
+      </button>
+    </div> 
+  </div>  
+</form>

@@ -1,6 +1,124 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-body { 
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px; 
+* {
+  --blueGray: #b3c4c1;
+  --darkGray: #707070;
+  --color-primary-light: #d0adff;
+  --color-primary: #9f63ed;
+  --color-primary-dark: #6217c4;
+  --color-secondary-lighter: #f2fffd;
+  --color-secondary-light: #ebf8f7;
+  --color-secondary: #BEE8E4;
+  --color-secondary-dark: #9AD1CB;
+  --color-secondary-darker: #57afa5;
+  --input-border: #2d5e5a;
+  --input-border-focus: #16433f;
+  --color-invalid: #ffa0b6;
+  box-sizing: border-box;
+}
+
+@mixin label-before-input {
+  opacity: 1;
+  order: 1;
+  position: unset;
+  font-size: 0.9rem;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  background-color: var(--color-secondary);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+
+  & .input, textarea {
+    border: none;
+    display: block;
+    resize: none;
+    background-color: var(--color-secondary-light);
+    border-bottom: 2px solid var(--color-secondary);
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: var(--color-primary-dark);
+    font-weight: 500;
+    position: relative;
+    overflow: visible;
+    margin-top: 2rem;
+    order: 2;
+    cursor: pointer;
+  }
+
+  & .input:valid, & textarea:valid {
+    margin-top: 0;
+    margin-bottom:2.25rem;
+  }
+
+  & .input:valid + .input-label, textarea:valid + .input-label {
+    @include label-before-input;
+  }
+
+  & .input-label {
+    color: var(--color-primary-dark);
+    order: 3;
+    font-size: 1rem;
+    font-weight: bold;
+    position: relative;
+    top: -2rem;
+    left: 0.5rem;
+    cursor: pointer;
+    opacity: 0.3;
+  }
+
+  & textarea + .input-label {
+    top: -6.5rem;
+  }
+
+  .input:focus, textarea:focus {
+    margin-top: 0;
+    border-color: var(--color-primary);
+    outline: none;
+    margin-bottom:2rem;
+
+    & ~ .input-label {
+      @include label-before-input;
+    }
+  }
+
+  & textarea:focus {
+    margin-bottom: 2.2rem;
+  }
+
+  & .form-feedbacknot:not(.invalid-input) {
+    display: none;
+  }
+
+  & .form-feedback.invalid-input {
+    display: unset;
+    order: 5;
+    margin-top: -1rem;
+    font-size: 0.9rem;
+    color: var(--color-invalid);
+  }
+}
+
+.btn {
+  border-radius: 0;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 0.2rem;
+}
+ 
+.btn-secondary {
+  background-color: var(--color-secondary-dark);
+  border: var(--color-secondary);
+  color: var(--color-primary-dark);
+
+  &:hover {
+      background-color: var(--color-secondary-darker);
+  }
 }

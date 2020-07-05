@@ -1,8 +1,19 @@
-.navbar-brand { 
+.main-navbar {
+  background-color: transparent;
+
+  .navbar-brand {
     transition-duration: 0.2s;
     background-color: transparent;
-    &:hover {
-        transform: scale(1.1); 
-        text-shadow: 0.2rem 0.2rem 0.5rem rgba(77, 60, 107, 0.466);
+    color: var(--color-primary-dark);
+    font-size: 1.5rem;
+
+    &:hover { 
+      text-shadow: 0.2rem 0.2rem 0.5rem rgba(77, 60, 107, 0.466);
     }
+  }
+
+  .is-active {
+      border-bottom: 2px solid var(--color-primary); 
+      font-weight: bold;
+  }
 }

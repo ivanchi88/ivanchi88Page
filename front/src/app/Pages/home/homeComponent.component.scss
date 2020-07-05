@@ -1,6 +1,6 @@
 .exampleClass {
-    color: purple;
-    font-size: 5rem;
+    color: var(--color-primary);
+    font-size: 2.5rem;
     padding-left: 0.3rem;
     padding-right: 0.3rem; 
 }

@@ -1,17 +1,18 @@
-$blueGray : #b3c4c1;
-$darkGray : #707070;
 .contact-container {
-    border: 1px solid redaaa6;
-    border-radius: 0.5rem;
-    box-shadow: $blueGray 0.5rem 0.5rem 1rem; 
-    transition-duration: 0.25s;
-    &:hover {
-        transform: translateY(0.25rem);
-        box-shadow: $blueGray 0.05rem 0.05rem 1rem;
-    }
+  border-radius: 0.5rem;
+  box-shadow: var(--blueGray) 0.25rem 0.25rem 0.5rem;
+  transition: box-shadow 0.25s;
+  background-color: var(--color-secondary-lighter);
 
-    .contact {
-       color: $darkGray; 
-       margin: auto;
-    }
+  &:hover {
+    box-shadow: var(--blueGray) 0.05rem 0.05rem 0.5rem;
+  }
+
+  .contact {
+    color: var(--darkGray);
+  }
+
+  .form-submission {
+      margin-left: 6.5rem;
+  }
 }

@@ -12,8 +12,9 @@ const credentials : any = {
 }
 
 const transporter: any = nodemailer.createTransport({
-    service: 'gmail',
+    port: 143, 
     auth: credentials,
+    host: process.env.MAILHOST,
     secure: false,
     tls: {
         rejectUnauthorized: false
@@ -25,6 +26,18 @@ const sendMail : Function = function(mail : MailDto) {
         to: mail.destinatary,
         subject: mail.subject ||"subject",
         html: mail.message
+    }, (err: any, info: any) => {
+            if (err) {
+                console.error(err);
+            }
+            if (info) {
+              console.info(info);
+            }
+            if (mail) {
+                console.info(mail);
+            }
+
+            throw err;
     });
 }
 
