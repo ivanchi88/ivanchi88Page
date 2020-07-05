@@ -12,8 +12,9 @@ const credentials = {
     pass: process.env.MAILPASSWORD
 };
 const transporter = nodemailer_1.default.createTransport({
-    service: 'gmail',
+    port: 25,
     auth: credentials,
+    host: process.env.MAILHOST,
     secure: false,
     tls: {
         rejectUnauthorized: false
@@ -25,6 +26,16 @@ const sendMail = function (mail) {
         to: mail.destinatary,
         subject: mail.subject || "subject",
         html: mail.message
+    }, (err, info) => {
+        if (err) {
+            console.error(err);
+        }
+        if (info) {
+            console.info(info);
+        }
+        if (mail) {
+            console.info(mail);
+        }
     });
 };
 const sendContactMail = function (data) {

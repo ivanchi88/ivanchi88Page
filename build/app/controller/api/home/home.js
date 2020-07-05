@@ -10,7 +10,14 @@ const router = express_1.default.Router();
 const url = "/home";
 router.post('/sendContactEmail', (req, res, next) => {
     let contactData = req.body;
-    mailService_1.default.SendContactMail(contactData);
+    try {
+        mailService_1.default.SendContactMail(contactData);
+    }
+    catch (ex) {
+        res.sendStatus(500);
+        next();
+        return;
+    }
     res.sendStatus(200);
     next();
 });
