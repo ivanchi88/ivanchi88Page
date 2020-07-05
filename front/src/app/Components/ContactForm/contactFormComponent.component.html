@@ -25,13 +25,16 @@
     <div class="col-md-10 col-xs-12 input-group">
       <textarea class="input" [(ngModel)]="contactData.message" id="Message" name="Message" rows="4" required></textarea>
       <label class="input-label" placeholder=" " for="Message">Message</label>
-      <div class="invalid-input form-feedback" *ngIf="message && message !== ''"> {{message}} </div>
+      <div class="invalid-input form-feedback" *ngIf="errorMessage && errorMessage !== ''"> {{errorMessage}} </div>
     </div>
 
     <div class="w-100 mt-4">
       <button class="btn btn-secondary form-submission" (click)="onSubmitClick()">
         Submit
       </button>
-    </div> 
+      <div class="text-success d-inline-block ml-4">
+        {{successMessage}}
+      </div>
+    </div>
   </div>  
 </form>

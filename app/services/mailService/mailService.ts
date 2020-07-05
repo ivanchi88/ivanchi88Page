@@ -12,7 +12,7 @@ const credentials : any = {
 }
 
 const transporter: any = nodemailer.createTransport({
-    port: 143, 
+    port: 25, 
     auth: credentials,
     host: process.env.MAILHOST,
     secure: false,
@@ -20,7 +20,7 @@ const transporter: any = nodemailer.createTransport({
         rejectUnauthorized: false
     }
 });
-const sendMail : Function = function(mail : MailDto) { 
+const sendMail: Function = function (mail: MailDto) {
     transporter.sendMail({
         from: credentials.user,
         to: mail.destinatary,
@@ -36,8 +36,6 @@ const sendMail : Function = function(mail : MailDto) {
             if (mail) {
                 console.info(mail);
             }
-
-            throw err;
     });
 }
 

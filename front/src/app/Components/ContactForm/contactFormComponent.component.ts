@@ -9,13 +9,16 @@ import { ApiService } from 'src/app/Services/ApiService/api-service.service';
 export class ContactFormComponent implements OnInit {
  
     contactData : ContactData;
-    message: string;
+    errorMessage: string;
+    successMessage: string;
+
 
     minRows: Number;
 
     constructor(private apiService: ApiService) {
       this.resetData();
-      this.message = "";
+      this.errorMessage = "";
+      this.successMessage = "";
      }
 
     resetData() {
@@ -33,19 +36,23 @@ export class ContactFormComponent implements OnInit {
       this.minRows = 10;
     }
 
-    onSubmitClick () {
+  onSubmitClick() {
+
+      this.successMessage = "";
       if (!this.contactData.message ||  this.contactData.message === "") {
-        this.message = "Empty mail...";
+        this.errorMessage = "Empty mail...";
         return;
       };
+
       this.contactData.dateSent = new Date();
       this.apiService.sendContactEmail(this.contactData).subscribe(() => {
         this.resetData();
-        this.message = "Succes :)";
+        this.errorMessage = "";
+        this.successMessage = "Message send!";
       },
       err => {
         console.log(err);
-        this.message = "Error :(";
+        this.errorMessage = "Error :(";
       })
     }
  
